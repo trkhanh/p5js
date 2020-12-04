@@ -78,7 +78,7 @@ const sketch_3 = (s) => {
 
     // Body
     s.noStroke(); // Disable stroke
-    s.fill(255,0,0); // Set fill to gray
+    s.fill(255, 0, 0); // Set fill to gray
     s.ellipse(264, 377, 33, 33); // Antigravity orb
     s.fill(0); // Set fill to black
     s.rect(219, 257, 90, 120); // Main body
@@ -99,6 +99,70 @@ const sketch_3 = (s) => {
   };
 };
 
+const sketch_4 = (s) => {
+  var y = 150;
+  var d = 130;
+
+  s.setup = () => {
+    s.createCanvas(720, 480);
+    s.strokeWeight(2);
+    s.ellipseMode(s.RADIUS);
+  };
+
+  s.draw = () => {
+    s.ellipse(80, y, d, d);
+    s.ellipse(255, y, d, d);
+    s.ellipse(430, y, d, d);
+  };
+};
+
+const sketch_5 = (s) => {
+  var t = 0;
+  var SEPARATION = 20;
+  var COUNT = 5;
+  var i;
+
+  s.setup = () => {
+    s.createCanvas(800, 800);
+  };
+
+  s.draw = () => {
+    s.background(255);
+    t = t + 0.2;
+
+    if (t > SEPARATION) {
+      t = 0;
+    }
+    var j = 0;
+    for (y = 0; y < height; y += (SEPARATION * COUNT) / 2) {
+      j++;
+
+      for (
+        x = ((j % 2) * SEPARATION * COUNT) / 2;
+        x < width + SEPARATION * COUNT;
+        x += SEPARATION * COUNT
+      ) {
+        s.ellipse(x, y, SEPARATION * COUNT, SEPARATION * COUNT);
+        for (i = COUNT - 1; i >= 0; i--) {
+          s.ellipse(x, y, t + SEPARATION * i, t + SEPARATION * i);
+        }
+      }
+      for (
+        x = (((j + 1) % 2) * SEPARATION * COUNT) / 2;
+        x < width;
+        x += SEPARATION * COUNT
+      ) {
+        s.ellipse(x, y, SEPARATION * COUNT, SEPARATION * COUNT);
+        for (i = COUNT - 1; i >= 0; i--) {
+          s.ellipse(x, y, t + SEPARATION * i, t + SEPARATION * i);
+        }
+      }
+    }
+  };
+};
+
 window.sketchInstance = new p5(sketch_2);
 window.sketchInstance2 = new p5(sketch_1);
 window.sketchInstance3 = new p5(sketch_3);
+window.sketchInstance4 = new p5(sketch_4);
+window.sketchInstance5 = new p5(sketch_5);
