@@ -1,0 +1,38 @@
+{
+  "name": "tailwind-parcel-boilerplate",
+  "version": "1.0.4",
+  "description": "♥ Boilerplate parcel with tailwindcss by simple 🪐 way ",
+  "scripts": {
+    "start": "parcel src/index.html --port 3000",
+    "build": "rm -rf dist && parcel build src/index.html --no-source-maps"
+  },
+  "repository": "https://github.com/trkhanh/tailwind-parcel-boilerplate",
+  "main": "./src/main.js",
+  "author": "Khanh Tran <trkhanh8@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "tailwind",
+    "css",
+    "tailwindcss",
+    "parcel",
+    "starter",
+    "boilerplate",
+    "build"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "parcel-bundler": "^1.12.4",
+    "postcss": "^7.0.26",
+    "postcss-load-config": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.1.2",
+    "tailwindcss": "^1.8.10",
+    "tailwindcss-font-inter": "^1.0.8"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "dependencies": {
+    "p5": "^1.1.9"
+  }
+}

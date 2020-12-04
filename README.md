@@ -1,4 +1,4 @@
-# 🌀 TailwindCSS + Parcel + PostCss Starter Project 
+# 🌀 p5js + TailwindCSS + Parcel + PostCss Starter Project 
 
 A bare-simple [Tailwind CSS](https://tailwindcss.com) + [ParcelJS](https://parceljs.org) boilerplate. Uses [Postcss](https://github.com/postcss/postcss) in production builds.
 
