@@ -8,10 +8,6 @@ A bare-simple [Tailwind CSS](https://tailwindcss.com) + [ParcelJS](https://parce
 ### Create your project folder.
 
 ```bash
-# create new project
-$ npx degit trkhanh/tailwind-parcel-boilerplate example-1
-$ cd example-1
-
 # install required packages
 $ npm i
 

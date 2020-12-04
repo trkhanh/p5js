@@ -65,7 +65,6 @@ function drawPattern(size,origin,ang){
 
 
 
-
 canvas.width = innerWidth;
 canvas.height = innerHeight    
 origin.x = canvas.width / 2;
