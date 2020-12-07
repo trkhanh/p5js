@@ -62,8 +62,8 @@ const haftoneDot = (s) => {
 
   s.draw = () => {
     for (var y = 32; y <= s.height; y += 8) {
-      for (var x = 12; x <= s.width; x += 15) {
-        s.ellipse(x + y, y, 16 - y / 10.0, 16 - y / 10.0);
+      for (var x = 20; x <= s.width; x += 15) {
+        s.ellipse(x + y, y, 16- y/10, 16- y/10);
       }
     }
   };
