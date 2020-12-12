@@ -4,6 +4,7 @@
   "description": "♥ Boilerplate parcel with tailwindcss by simple 🪐 way ",
   "scripts": {
     "start": "parcel src/index.html --port 3000",
+    "start-canvas": "parcel src/index2.html --port 3000",
     "build": "rm -rf dist && parcel build src/index.html --no-source-maps"
   },
   "repository": "https://github.com/trkhanh/tailwind-parcel-boilerplate",

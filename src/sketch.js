@@ -161,8 +161,49 @@ const sketch_5 = (s) => {
   };
 };
 
-window.sketchInstance = new p5(sketch_2);
-window.sketchInstance2 = new p5(sketch_1);
-window.sketchInstance3 = new p5(sketch_3);
-window.sketchInstance4 = new p5(sketch_4);
-window.sketchInstance5 = new p5(sketch_5);
+const sketch_6 = (s) => {
+  s.setup = () => {
+    s.createCanvas(480, 120);
+    s.strokeWeight(8);
+  };
+
+  s.draw = () => {
+    s.background(204);
+    for (var i = 20; i < 400; i += 60) {
+      s.line(i, 40, i + 60, 80);
+      s.fill(209);
+      s.line(i, 5, i + 60, 80);
+    }
+
+    for (var i = 0; i < 400; i += 60) {
+      s.strokeWeight(1);
+      s.line(i, 0, i + i / 2, 80);
+    }
+  };
+};
+
+const sketch_7 = (s) => {
+  s.setup = () => {
+    s.createCanvas(480, 120);
+    s.strokeWeight(8);
+  };
+
+  s.draw = () => {
+    s.background(204);
+    for (var i = 20; i < 400; i += 20) {
+      s.line(i, 0, i + i / 2, 80);
+      s.line(i + i / 2, 80, i * 1.2, 120);
+    }
+  };
+};
+
+const sketch_8 = (s) => {
+
+};
+// window.sketchInstance = new p5(sketch_2);
+// window.sketchInstance2 = new p5(sketch_1);
+// window.sketchInstance3 = new p5(sketch_3);
+// window.sketchInstance4 = new p5(sketch_4);
+// window.sketchInstance5 = new p5(sketch_5);
+window.sketchInstance6 = new p5(sketch_6);
+window.sketchInstance7 = new p5(sketch_7);
