@@ -1,12 +1,11 @@
 $(document).ready(function() {
-    
     if (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Shape", "1.0")) {
         $(".cdo-nojq").hide()
     }
     if (!!document.createElementNS && !!document.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect) {
         $(".cdo-nojq").hide()
     }
-    setPatternLinks("marudai");
+    // setPatternLinks("marudai");
     $.ajaxSetup({
         timeout: 20000
     });
@@ -14,10 +13,11 @@ $(document).ready(function() {
     colourSource.linkTo(function(a) {
         braid.setColour(a)
     });
+    window.state = "001010108070708070708070708070722229beb3700ffffffffffffeb370022229b080707080707"
     if (state != "") {
         braid.setState(state)
     }
-    braid.url = braid_url;
+    braid.url = "https://craftdesignonline.com/cdo/wp-content/cdokb/js/mitsumine.php";
     braid.load();
     colourSource.setColour("#ff0000")
 });
@@ -88,7 +88,8 @@ var braid = {
         this.attempts = 3
     },
     setState: function(d) {
-        var a = 1, c, b;
+        var a = 1,
+            c, b;
         if (d.substr(0, 3) == "001") {
             a = parseInt(d.substr(3, 2), 16);
             d = d.substr(5)
@@ -106,7 +107,8 @@ var braid = {
         }
     },
     load: function() {
-        var c = this, a, b, d = {};
+        var c = this,
+            a, b, d = {};
         $("#brCanvas svg").css({
             visibility: "hidden"
         });
@@ -115,21 +117,22 @@ var braid = {
                 $(this).remove()
             }
         });
-        if ($("#spinner").length < 1) {
-            $("#brCanvas").svg();
-            a = $("#brCanvas").svg("get");
-            a.configure({
-                height: this.height
-            });
-            $(a.image(250, 200, 32, 32, "/i/ajax-loader.gif", {
-                id: "spinner",
-                visibility: "visible"
-            }))
-        } else {
-            $("#spinner").css({
-                display: "block"
-            })
-        }
+        // if ($("#spinner").length < 1) {
+        //     $("#brCanvas").svg();
+        //     // var svg = $('#brCanvas').svg();
+        //     a = $("#brCanvas").svg("get");
+        //     a.configure({
+        //         height: this.height
+        //     });
+        //     $(a.image(250, 200, 32, 32, "/i/ajax-loader.gif", {
+        //         id: "spinner",
+        //         visibility: "visible"
+        //     }))
+        // } else {
+        //     $("#spinner").css({
+        //         display: "block"
+        //     })
+        // }
         if (this.adjustables.length > 0) {
             for (b = 0; b < this.adjustables.length; b++) {
                 d[this.adjustables[b].key] = this.adjustables[b].currentValue
@@ -145,80 +148,80 @@ var braid = {
                 }
             }
         }
-        $.ajax({
-            type: "get",
-            url: this.url,
-            data: d,
-            success: function(f) {
-                var g, e;
-                $("#brCanvas svg").empty();
-                g = f.split("|"),
-                buttonList = "";
-                if (g[0].charAt(0) == "A") {
-                    c.totalThreads = c.totalThreadsMultiplied;
-                    g[0] = g[0].substr(1);
-                    c.formats += "A"
-                }
-                if (g[0].charAt(0) == "B") {
-                    buttonList = g[0].substr(1);
-                    g.splice(0, 1);
-                    c.formats += "B"
-                }
-                if (g[0].charAt(0) == "C") {
-                    c.totalThreads = c.totalThreadsAddedDoubled;
-                    g[0] = g[0].substr(1);
-                    c.formats += "C"
-                }
-                if (g[0].charAt(0) == "M") {
-                    g[0] = g[0].substr(1);
-                    c.formats += "M"
-                }
-                if (g[0].charAt(0) == "T") {
-                    g[0] = g[0].substr(1);
-                    c.formats += "T"
-                }
-                $.each(g, function(h, i) {
-                    c.addStitch(h, i)
-                });
-                c.setPatternButtons(buttonList);
-                $("#brCanvas svg").css({
-                    visibility: "visible"
-                });
-                $("#spinner").css({
-                    display: "none"
-                });
-                if (c.formats.indexOf("M") != -1) {
-                    e = new Image();
-                    e.onload = function() {
-                        c.display();
-                        a.image(c.border - c.minX * c.scale, c.border - c.minY * c.scale, this.width * c.scale, this.height * c.scale, c.url.slice(0, c.url.length - 3) + "tm.png", {
-                            "pointer-events": "none"
-                        })
-                    }
-                    ;
-                    e.src = c.url.slice(0, c.url.length - 3) + "tm.png"
-                } else {
-                    c.display()
-                }
-            },
-            error: function(f, e) {
-                if (c.attempts-- == 0) {
-                    c.reset();
-                    $("#brCanvas svg").css({
-                        visibility: "visible"
-                    });
-                    $("#spinner").css({
-                        display: "none"
-                    });
-                    alert("Couldn't update braid. Please try later");
-                    return
-                }
-                setTimeout(function() {
-                    c.load()
-                }, c.delay *= 2)
-            },
-            complete: function() {}
-        })
+
+        // $.ajax({
+        //     type: "get",
+        //     url: this.url,
+        //     data: d,
+        //     success: function(f) {
+        //         var g, e;
+        //         $("#brCanvas svg").empty();
+        //         g = f.split("|"),
+        //             buttonList = "";
+        //         if (g[0].charAt(0) == "A") {
+        //             c.totalThreads = c.totalThreadsMultiplied;
+        //             g[0] = g[0].substr(1);
+        //             c.formats += "A"
+        //         }
+        //         if (g[0].charAt(0) == "B") {
+        //             buttonList = g[0].substr(1);
+        //             g.splice(0, 1);
+        //             c.formats += "B"
+        //         }
+        //         if (g[0].charAt(0) == "C") {
+        //             c.totalThreads = c.totalThreadsAddedDoubled;
+        //             g[0] = g[0].substr(1);
+        //             c.formats += "C"
+        //         }
+        //         if (g[0].charAt(0) == "M") {
+        //             g[0] = g[0].substr(1);
+        //             c.formats += "M"
+        //         }
+        //         if (g[0].charAt(0) == "T") {
+        //             g[0] = g[0].substr(1);
+        //             c.formats += "T"
+        //         }
+        //         $.each(g, function(h, i) {
+        //             c.addStitch(h, i)
+        //         });
+        //         c.setPatternButtons(buttonList);
+        //         $("#brCanvas svg").css({
+        //             visibility: "visible"
+        //         });
+        //         $("#spinner").css({
+        //             display: "none"
+        //         });
+        //         if (c.formats.indexOf("M") != -1) {
+        //             e = new Image();
+        //             e.onload = function() {
+        //                 c.display();
+        //                 a.image(c.border - c.minX * c.scale, c.border - c.minY * c.scale, this.width * c.scale, this.height * c.scale, c.url.slice(0, c.url.length - 3) + "tm.png", {
+        //                     "pointer-events": "none"
+        //                 })
+        //             };
+        //             e.src = c.url.slice(0, c.url.length - 3) + "tm.png"
+        //         } else {
+        //             c.display()
+        //         }
+        //     },
+        //     error: function(f, e) {
+        //         if (c.attempts-- == 0) {
+        //             c.reset();
+        //             $("#brCanvas svg").css({
+        //                 visibility: "visible"
+        //             });
+        //             $("#spinner").css({
+        //                 display: "none"
+        //             });
+        //             alert("Couldn't update braid. Please try later");
+        //             return
+        //         }
+        //         setTimeout(function() {
+        //             c.load()
+        //         }, c.delay *= 2)
+        //     },
+        //     complete: function() {}
+        // })
     },
     addStitch: function(a, e) {
         var c, d, f, b;
@@ -227,11 +230,11 @@ var braid = {
             return
         }
         d = e.split(";"),
-        f = parseInt(d[0]);
+            f = parseInt(d[0]);
         d.shift();
         for (c = 0; c < d.length; c++) {
             b = d[c].split(",");
-            d[c] = new Point(parseFloat(b[0]),parseFloat(b[1]));
+            d[c] = new Point(parseFloat(b[0]), parseFloat(b[1]));
             if (d[c].x < this.minX) {
                 this.minX = d[c].x
             }
@@ -245,7 +248,7 @@ var braid = {
                 this.maxY = d[c].y
             }
         }
-        this.stitches.push(new Stitch(f,d))
+        this.stitches.push(new Stitch(f, d))
     },
     init: function(d) {
         var b, c, e, a;
@@ -265,7 +268,7 @@ var braid = {
             }
         } else {
             groupStart = 5;
-            this.adjustables.push(new Adjustable("Threads","threads",parseInt(b[2]),parseInt(b[3]),parseInt(b[4]),this.numThreads))
+            this.adjustables.push(new Adjustable("Threads", "threads", parseInt(b[2]), parseInt(b[3]), parseInt(b[4]), this.numThreads))
         }
         this.groups = new Array();
         this.angles = new Array();
@@ -278,7 +281,11 @@ var braid = {
         this.setColours()
     },
     setColours: function() {
-        var e, c, f = "", h = "", b = -1, g = -1, a, d;
+        var e, c, f = "",
+            h = "",
+            b = -1,
+            g = -1,
+            a, d;
         if (this.oldAdjustables != null) {
             for (e = 0; e < this.adjustables.length; e++) {
                 f += this.oldAdjustables[e] + ",";
@@ -339,9 +346,17 @@ var braid = {
             this.drawMarudai();
             return
         }
-        var c = this, b = this.groups.length, f = 14 - (this.totalThreads() / 10) - (b / 10), g = 0, k, e, r, q, d, n, h = this.startPosY - 150, p = this.startPosX - 150 + (f * 9), a = 0, m = 0, o, l = $("#brCanvas").svg("get");
-        n = new Array(this.startPosX - 150 + f * 12,this.startPosX - 150 + f * 9,this.startPosX - 150,this.startPosX - 150 + f * 3);
-        n = new Array(this.startPosX - 150 + f * 12,this.startPosX - 150 + f * 9,this.startPosX - 150,this.startPosX - 150 + f * 3);
+        var c = this,
+            b = this.groups.length,
+            f = 14 - (this.totalThreads() / 10) - (b / 10),
+            g = 0,
+            k, e, r, q, d, n, h = this.startPosY - 150,
+            p = this.startPosX - 150 + (f * 9),
+            a = 0,
+            m = 0,
+            o, l = $("#brCanvas").svg("get");
+        n = new Array(this.startPosX - 150 + f * 12, this.startPosX - 150 + f * 9, this.startPosX - 150, this.startPosX - 150 + f * 3);
+        n = new Array(this.startPosX - 150 + f * 12, this.startPosX - 150 + f * 9, this.startPosX - 150, this.startPosX - 150 + f * 3);
         for (k = 0; k < 4; k++) {
             r = n[k];
             q = h;
@@ -411,16 +426,23 @@ var braid = {
         return d
     },
     calcGroupAngleRatio: function(a, e) {
-        var d = (this.angles[a] + 360) % 360
-          , c = (this.angles[e] + 360) % 360
-          , b = (c - d + 360) % 360;
+        var d = (this.angles[a] + 360) % 360,
+            c = (this.angles[e] + 360) % 360,
+            b = (c - d + 360) % 360;
         if (b > 180) {
             b = 360 - b
         }
         return b / ((this.groups[a] + this.groups[e] + 2) / 2)
     },
     drawMarudai: function() {
-        var b = this, a = this.groups.length, e = 14 - (this.totalThreads() / 10) - (a / 10), f = 0, g, d, q, p, o, n, c, m = this.startPosX, l = this.startPosY, k = 0, h = $("#brCanvas").svg("get");
+        var b = this,
+            a = this.groups.length,
+            e = 14 - (this.totalThreads() / 10) - (a / 10),
+            f = 0,
+            g, d, q, p, o, n, c, m = this.startPosX,
+            l = this.startPosY,
+            k = 0,
+            h = $("#brCanvas").svg("get");
         q = this.calcThreadSizeAndAngle();
         e = Math.min(14, (150 * 1.5) * Math.sin((q / 2) * Math.PI / 180));
         for (g = 0; g < a; g++) {
@@ -517,7 +539,9 @@ var braid = {
         this.checkButtons()
     },
     display: function(a) {
-        var g = (this.width - 2 * this.border) / (this.maxX - this.minX), e = (this.height - 2 * this.border) / (this.maxY - this.minY), q, n, m, h, p, s, d, b, f, c, l, r;
+        var g = (this.width - 2 * this.border) / (this.maxX - this.minX),
+            e = (this.height - 2 * this.border) / (this.maxY - this.minY),
+            q, n, m, h, p, s, d, b, f, c, l, r;
         this.sendState();
         if (g > e) {
             this.scale = e
@@ -584,7 +608,7 @@ var braid = {
         return a
     },
     addUndo: function() {
-        var a = new State(this.adjustables,this.threadColours,this.currColour,this.currId);
+        var a = new State(this.adjustables, this.threadColours, this.currColour, this.currId);
         this.undo.push(a);
         if (this.redo.length > 0) {
             this.redo = new Array()
@@ -592,7 +616,8 @@ var braid = {
         this.checkButtons()
     },
     changeMouse: function() {
-        var b = this, a;
+        var b = this,
+            a;
         if (this.mouseDown) {
             for (a = 0; a < this.numThreads; a++) {
                 $(".path" + a).on("mouseenter", {
@@ -654,7 +679,7 @@ var braid = {
         var a;
         if (this.undo.length > 0) {
             a = this.undo.pop();
-            this.redo.push(new State(this.adjustables,this.threadColours,this.currColour,this.currId));
+            this.redo.push(new State(this.adjustables, this.threadColours, this.currColour, this.currId));
             this.resetState(a)
         }
     },
@@ -662,7 +687,7 @@ var braid = {
         var a;
         if (this.redo.length > 0) {
             a = this.redo.pop();
-            this.undo.push(new State(this.adjustables,this.threadColours,this.currColour,this.currId));
+            this.undo.push(new State(this.adjustables, this.threadColours, this.currColour, this.currId));
             this.resetState(a)
         }
     },
@@ -737,7 +762,9 @@ var braid = {
         }
     },
     getState: function() {
-        var d = "001", a = this.adjustables.length, b, c;
+        var d = "001",
+            a = this.adjustables.length,
+            b, c;
         d += this.hexString(a);
         for (b = 0; b < a; b++) {
             d += this.hexString(this.adjustables[b].currentValue)
@@ -763,7 +790,8 @@ var braid = {
         return a
     },
     setPatternButtons: function(d) {
-        var g = this, f, c, a, h, e, b;
+        var g = this,
+            f, c, a, h, e, b;
         kmButtons = new Array();
         $("#jsMarudaiView ul li button").each(function(i) {
             if ($(this).attr("name") == "braid") {
@@ -776,7 +804,7 @@ var braid = {
             return
         }
         f = d.split(","),
-        c = $("#jsMarudaiView ul");
+            c = $("#jsMarudaiView ul");
         $.each(f, function(i, j) {
             g.kmButtons.push(j);
             a = g.url.substr(0, g.url.length - 4);
@@ -815,7 +843,8 @@ var braid = {
         })
     },
     printButtonAction: function(g) {
-        var d = this, b, f, a, h, c;
+        var d = this,
+            b, f, a, h, c;
         this.counter = 0;
         $("#jsMarudaiView ul li button").each(function(e) {
             if ($(this).attr("name") === "braid") {
@@ -851,7 +880,8 @@ var braid = {
         })
     },
     addSVG: function(k, c, o, m) {
-        var b, d, j, p, e, h, l, f, n = 0, a = 0;
+        var b, d, j, p, e, h, l, f, n = 0,
+            a = 0;
         for (b = 0; b < this.threadColours.length; b++) {
             $(".path" + b).attr("fill", this.threadColours[b])
         }
@@ -891,7 +921,8 @@ var braid = {
         $("#kmDisplay").attr("height", n + 30).attr("width", 700)
     },
     patternButtonAction: function(h) {
-        var d = this, g, b, f, a, j, c;
+        var d = this,
+            g, b, f, a, j, c;
         $("#jsMarudaiView ul li button").each(function(e) {
             $(this).removeClass("current")
         });
@@ -998,6 +1029,7 @@ var braid = {
         return c * 2
     }
 };
+
 function State(c, a, b, e) {
     var d;
     this.adjustableValues = [];
@@ -1008,15 +1040,17 @@ function State(c, a, b, e) {
     this.currColour = b;
     this.currId = e
 }
+
 function Thread(a) {
     this.color = a
 }
+
 function Stitch(a, b) {
     this.threadNum = a;
     this.coords = b
 }
+
 function Point(a, b) {
     this.x = a;
     this.y = b
-}
-;
+};

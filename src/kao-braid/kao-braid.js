@@ -25,7 +25,7 @@ $(document).ready(function () {
   // The color souces must have method to LinkTo this kaoPattern
 });
 
-import { ColourList } from './ColourList';
+import { ColourList } from './lib';
 
 function Adjustable(c, e, f, a, g, b) {
   if (e === undefined) {
@@ -70,7 +70,7 @@ function Adjustable(c, e, f, a, g, b) {
     attempts: 3,
     startPosX: 470,
     startPosY: 200,
-    threadColour: new Array(),
+    threadColours: new Array(),
     stitches: new Array(),
     paths: new Array(),
     mouseDown: false,
@@ -90,6 +90,35 @@ function Adjustable(c, e, f, a, g, b) {
     threadAngle: 15,
     reset: () => {
       (this.delay = 1000), (this.attempts = 3);
+    },
+
+    /**
+     *
+     * @param {String} data
+     */
+    setState: function (data) {
+      var a = 1,
+        b;
+
+      if (data.substr(0, 3) == '001') {
+        a = parseInt(data.substr(3, 2), 16);
+        data = data.substr(5);
+      }
+
+      for (var i = 0; i < a; i++) {
+        this.stateAdjustables[i] = parseInt(data.substr(2 * i, 2), 16);
+      }
+
+      data = data.substr(a * 2);
+      this.numThreads = data.length / 6;
+
+      for (var i = 0; i < this.numThreads; i++) {
+        b = `#${data.substr(i * 6, 6)}`;
+        this.threadColours[i] = b;
+        this.colourList.
+      }
+
+      ddata;
     },
   };
 }
