@@ -18,8 +18,10 @@ export const FindCursor = (s) => {
       x -= 0.5;
       offset = 10;
     }
-
+    console.log(s.mouseX, s.mouseY, s.mouseX, 'offset', offset, s.mouseY - 10);
     s.line(x, 0, x, s.height);
+    s.line(s.mouseX, s.mouseY, s.mouseX + offset, s.mouseY - 10);
+    s.line(s.mouseX, s.mouseY, s.mouseX + offset, s.mouseY + 10);
+    s.line(s.mouseX, s.mouseY, s.mouseX + offset*3, s.mouseY);
   };
 };
-
