@@ -2,31 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reinvented-color-wheel@0.2.10/css/reinvented-color-wheel.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reinvented-color-wheel@0.2.10/css/reinvented-color-wheel.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/reinvented-color-wheel@0.2.10"></script>
-    <script>
-        /* `window.ReinventedColorWheel` object is available */
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.css" />
+
+  <script>
+    /* `window.ReinventedColorWheel` object is available */
+  </script>
+  <style>
+    .sp-original-input-container .sp-add-on {
+      width: 100px !important;
+      border-radius: 5px !important;
+    }
+    input.spectrum.with-add-on{
+      padding: 12px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- #access -->
-    <div id="main">
-        <div id='my-color-picker-container'></div>
-        <div id="primary">
-            <div id="content" role="main">
-                <div id="kmDisplay" height="474" width="700">
-                    <div id="kmBraid" class="">
-                        <div id="brCanvas" class="hasSVG">
-                            <script type="image/svg+xml"></script>
-                            <svg version="1.1" width="699" height="800" style="visibility: visible;">
+  <!-- #access -->
+  <div id="main">
+    <div id='my-color-picker-container'></div>
+    <div id="primary">
+      <div id="content" role="main">
+        <input id="color-picker" value='#276cb8' />
+
+        <div id="kmDisplay" height="474" width="700">
+          <div id="kmBraid" class="">
+            <div id="brCanvas" class="hasSVG">
+              <script type="image/svg+xml"></script>
+              <svg version="1.1" width="699" height="800" style="visibility: visible;">
                 <path
                   d="M10,40A87.46427842267951,87.46427842267951 0 0,1 40,10A174.92855684535903,174.92855684535903 0 0,1 100,70A87.46427842267951,87.46427842267951 0 0,1 70,100A174.92855684535903,174.92855684535903 0 0,1 10,40"
                   class="path1 clickable" fill="#00bcff" stroke="#000000" stroke-width="2" style="cursor: pointer;">
@@ -220,52 +232,52 @@
                   class="path3 clickable" fill="#ef841a" stroke="#000000" stroke-width="2" style="cursor: pointer;">
                 </path>
               </svg>
-                        </div>
-                        <div id="prevCols" style="float:right"></div>
-                    </div>
-                </div>
             </div>
+            <div id="prevCols" style="float:right"></div>
+          </div>
         </div>
+      </div>
     </div>
-    <script src="colorPick.js"></script>
-    <script>
-        function setColor(pathname, color) {
-            var paths = document.getElementsByClassName(pathname)
+  </div>
+  <script>
+    var color = $("#color-picker").spectrum("get");
+    console.log('color', color.val())
+    function setColor(pathname) {
+      var paths = document.getElementsByClassName(pathname)
+      for (let index = 0; index < paths.length; index++) {
+        $(paths[index]).click(function (e) {
+          console.log(pathname)
+          for (let index = 0; index < paths.length; index++) {
+            paths[index].setAttribute("fill", color);
+          }
+        })
+      }
 
-            for (let index = 0; index < paths.length; index++) {
-                $(paths[index]).click(function(e) {
-                    for (let index = 0; index < paths.length; index++) {
-                        paths[index].setAttribute("fill", color);
-                    }
-                });
-            }
+      console.log(`set pathname:${pathname} color:${color}`);
+    }
 
-            console.log(`set pathname:${pathname} color:${color}`);
-        }
+    $('#color-picker').spectrum({
+      type: "flat",
+      showPaletteOnly: "true"
+    });
 
-
-        $(".colorPickSelector").colorPick({
-            'initialColor': '#27ae60',
-            'onColorSelected': function() {
-                console.log("The user has selected the color: " + this.color)
-                this.element.css({
-                    'backgroundColor': this.color,
-                    'color': this.color
-                });
-            }
-        });
+    $("#color-picker").spectrum({
+      change: function (_color) {
+        color = _color.toHexString()
+        setColor()
+      }
+    });
 
 
-        setColor('path0', '#D7CECC')
-        setColor('path1', '#D7CECC')
-        setColor('path2', '#D7CECC')
-        setColor('path3', '#1A2619')
-        setColor('path4', '#1A2619')
-        setColor('path5', '#1A2619')
-
-        setColor('path6', '#371109')
-        setColor('path7', '#1A2619')
-    </script>
+    setColor('path0')
+    setColor('path1')
+    setColor('path2')
+    setColor('path3')
+    setColor('path4')
+    setColor('path5')
+    setColor('path6')
+    setColor('path7')
+  </script>
 </body>
 
 
