@@ -1,4 +1,3 @@
-import p5 from 'p5';
 export const SmoothLine = (s) => {
   var x = 0;
   var y = 0;
