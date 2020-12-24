@@ -1,26 +1,20 @@
 import p5 from 'p5';
+import { FindCursor } from './modules/find-cursor.js';
+import { SmoothLine } from './modules/smooth-line';
+import { BoundCircle } from './modules/bound-circle';
+import { RobotArm } from './modules/robot-arm';
+import { SimpleScale } from './modules/simple-scale';
+import { LoadImage } from './modules/load-image.js';
+import { CircleMovement } from './modules/circle-movement';
+import { Spirals } from './modules/spiral';
+import { Owl } from './modules/owl';
 
-const smoothLine = (s) => {
-  var x = 0;
-  var y = 0;
-  var px = 0;
-  var py = 0;
-  var easing = 0.05;
-  s.setup = () => {
-    s.createCanvas(480, 120);
-    s.stroke(0, 102);
-  };
-  s.draw = () => {
-    var targetX = s.mouseX;
-    x += (targetX - x) * easing;
-    var targetY = s.mouseY;
-    y += (targetY - y) * easing;
-    var weight = s.dist(x, y, px, py);
-    s.strokeWeight(weight);
-    s.line(x, y, px, py);
-    py = y;
-    px = x;
-  };
-};
-
-new p5(smoothLine)
+new p5(SmoothLine);
+new p5(FindCursor);
+new p5(BoundCircle);
+new p5(RobotArm);
+new p5(SimpleScale);
+new p5(LoadImage);
+new p5(CircleMovement);
+new p5(Spirals);
+new p5(Owl);
